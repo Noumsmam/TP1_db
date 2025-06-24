@@ -13,8 +13,8 @@
 </head>
 <body>
     <main>
-        <div class="container-fluid">
-            <table>
+        <div class="col-8 text-center mx-auto ">
+            <table class="table table-striped border">
                 <tr>
                     <th>Departments</th>
                     <th>Manager</th>
@@ -22,9 +22,9 @@
                 </tr>
                 <?php foreach($liste as $row) { ?>
                     <tr>
-                        <td><?php echo $row[''] ?></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $row['dept_name']; ?></td>
+                        <td><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?> </td>
+                        <td><a href="employees.php?dept=<?php echo $row['dept_no']; ?>"><button class="btn btn-primary">See Employees</button></a></td>
                     </tr>
                 <?php } ?>
             </table>
