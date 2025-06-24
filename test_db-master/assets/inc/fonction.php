@@ -16,4 +16,22 @@
         }
         return $result;
     }
+
+    function getDepartementEmployees($id)
+    {
+        $req="SELECT employees.emp_no,employees.first_name,employees.last_name,employees.birth_date,employees.gender,employees.hire_date
+        FROM employees 
+        JOIN departments
+        JOIN dept_emp
+        ON dept_emp.emp_no = employees.emp_no
+        WHERE dept_emp.dept_no = '%s';";
+        $req=sprintf($req,$id);
+        $sql=mysqli_query(dbconnect(),$req);
+        $result=[];
+        while( $row=mysqli_fetch_assoc($sql) )
+        {
+            $result[]=$row;
+        }
+        return $result;
+    }
 ?>
