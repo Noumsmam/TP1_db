@@ -1,3 +1,3 @@
 <?php
-    header("location:./page/liste_departement");
+    header("Location: ./page/liste_departement");
 ?>
