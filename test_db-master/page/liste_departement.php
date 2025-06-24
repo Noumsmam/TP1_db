@@ -1,5 +1,5 @@
 <?php
-    include('./page/fonction.php');
+    include('../page/fonction.php');
     $_liste = getDepartement();
 ?>
 <!DOCTYPE html>
