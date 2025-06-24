@@ -1,5 +1,5 @@
 <?php
-    include('../page/fonction.php');
+    include('../assets/inc/fonction.php');
     $_liste = getDepartement();
 ?>
 <!DOCTYPE html>
@@ -10,6 +10,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <main>
+        <div class="container-fluid">
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </main>
 </body>
 </html>
