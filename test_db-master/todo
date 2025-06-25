@@ -10,8 +10,8 @@ v1
 v2 
     - bouton renvoi vers fiche.php
     - fiche.php
-        nom et prenom de l employé
-        historique de salaire et employe occupé de l employé
+        nom et prenom de l employé ok
+        historique de salaire et employe occupé de l employé ok
     - recherche.php
         formulaire 
             departement
