@@ -9,6 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <main>
+        <div class="col-8">
+            
+        </div>
+    </main>
 </body>
 </html>
