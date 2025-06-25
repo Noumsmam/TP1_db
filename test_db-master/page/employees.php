@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+    <header>
+        <div class="row">
+
+        </div>
+    </header>
     <main>
         <div class="col-8 text-center mx-auto ">
             <table class="table table-striped border">
@@ -22,6 +27,7 @@
                     <th>Last Name</th>
                     <th>Gender</th>
                     <th>Hire Date</th>
+                    <th>Voir plus</th>
                 </tr>
                 <?php foreach($emp as $row) { ?>
                     <tr>
@@ -30,6 +36,7 @@
                         <td><?php echo $row['last_name']; ?></td>    
                         <td><?php echo $row['gender']; ?></td>
                         <td><?php echo $row['hire_date']; ?></td>
+                        <td><a href="fiche.php?id=<?php echo $row['emp_no']; ?>"><button class="btn btn-primary" >fiche</button></a></td>
                     </tr>
                 <?php } ?>
             </table>

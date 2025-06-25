@@ -34,4 +34,26 @@
         }
         return $result;
     }
+
+    function getFicheEmployee($id)
+    {
+        $req="SELECT employees.first_name,employees.last_name,employees.gender,
+        salaries.salary,salaries.from_date,salaries.to_date,departments.dept_name
+        FROM employees
+        JOIN salaries
+        JOIN departments
+        JOIN dept_emp
+        ON employees.emp_no = salaries.emp_no
+        AND departments.dept_no = dept_emp.dept_no
+        AND employees.emp_no = dept_emp.emp_no
+        WHERE employees.emp_no = '%s';";
+        $req=sprintf($req,$id);
+        $sql=mysqli_query(dbconnect(),$req);
+        $result=[];
+        while( $row=mysqli_fetch_assoc($sql) )
+        {
+            $result[]=$row;
+        }
+        return $result;
+    }
 ?>
