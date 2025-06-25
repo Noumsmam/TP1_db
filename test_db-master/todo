@@ -1,0 +1,22 @@
+v1
+    - index ok
+    - liste_departments : ok
+        les departements ok
+        manager en cours ok
+        bouton renvoi vers employees.php ok
+    - employees.php ok
+        tableau des employer du departements ok
+
+v2 
+    - bouton renvoi vers fiche.php
+    - fiche.php
+        nom et prenom de l employé
+        historique de salaire et employe occupé de l employé
+    - recherche.php
+        formulaire 
+            departement
+            nom employé
+            age min et max
+    - afficher seulement 20 ligne
+    - creer lien suivant 
+    - creer lien precedent

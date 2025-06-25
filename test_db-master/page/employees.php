@@ -27,7 +27,7 @@
                     <tr>
                         <td><?php echo $row['emp_no']; ?></td>
                         <td><?php echo $row['first_name']; ?></td>
-                        <td><?php echo $row['last_name'] ?></td>    
+                        <td><?php echo $row['last_name']; ?></td>    
                         <td><?php echo $row['gender']; ?></td>
                         <td><?php echo $row['hire_date']; ?></td>
                     </tr>
