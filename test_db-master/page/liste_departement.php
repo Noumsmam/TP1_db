@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="../assets/bootstrap/js/bootstrap.bundle.min.js">
 </head>
 <body>
-    <header>
-        <a href="rechercher.php"><button>Recherche</button></a>
-    </header>
+   
     <main>
         <div class="col-8 text-center mx-auto ">
             <table class="table table-striped border">

@@ -9,7 +9,7 @@
             JOIN employees
             ON departments.dept_no = dept_manager.dept_no
             AND dept_manager.emp_no = employees.emp_no 
-            WHERE dept_manager.to_date > '%s';";
+            WHERE dept_manager.to_date > '%s' ORDER BY dept_name ASC;";
         $req=sprintf($req,$now);
         $sql=mysqli_query(dbconnect(),$req);
         $result=[];
@@ -49,7 +49,7 @@
         ON employees.emp_no = salaries.emp_no
         AND departments.dept_no = dept_emp.dept_no
         AND employees.emp_no = dept_emp.emp_no
-        WHERE employees.emp_no = '%s';";
+        WHERE employees.emp_no = '%s' ;";
         $req=sprintf($req,$id);
         $sql=mysqli_query(dbconnect(),$req);
         $result=[];
@@ -58,5 +58,18 @@
             $result[]=$row;
         }
         return $result;
+    }
+
+    function rechercher($bdd, $numDept, $nom, $min, $max, $page){
+        $limit = $page * 20;
+        $sql = "SELECT employees.*, TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) as Age FROM employees
+                JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+                WHERE dept_emp.dept_no = '%s' 
+                AND first_name LIKE '%%%s%%' 
+                AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) > '%s' 
+                AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < '%s' LIMIT %s, 20;";
+        $sql = sprintf($sql, $numDept, $nom, $min, $max, $limit);
+        $requete = mysqli_query($bdd, $sql);
+        return $requete;
     }
 ?>

@@ -2,6 +2,7 @@
     include('../assets/inc/fonction.php');
     $idDept=$_GET['dept'];
     $emp=getDepartementEmployees($idDept);
+    $dep=getDepartement();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +14,23 @@
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <div class="row">
-
-        </div>
-    </header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <form class="d-flex" role="search" action="../page/rechercher.php" method="post">
+            <select name="numDept">
+                <option value="0">Tous</option>
+                <?php foreach($dep as $row) { ?>
+                    <option value="<?php echo $row['dept_no'] ?>"><?php echo $row['dept_name'] ?></option>
+                <?php } ?>
+            </select>
+            <input type="text" name="nom" placeholder="Nom">
+            <input type="text" name="min" placeholder="Age min">
+            <input type="text" name="max" placeholder="Age max">
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+        </form>
+    </nav>
     <main>
         <div class="col-8 text-center mx-auto ">
-            <table class="table table-striped border">
+            <table class="table table-striped border table-hover">
                 <tr>
                     <th>Id</th>
                     <th>First Name</th>
