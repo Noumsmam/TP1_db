@@ -23,7 +23,7 @@
         $prevPage = 0;
     }
 
-    $resultat = rechercher(dbconnect(), $numDept, $nom, $ageMin, $ageMax, $page);
+    $resultat = rechercher( $numDept, $nom, $ageMin, $ageMax, $page);
 ?>
 
 <!DOCTYPE html>
