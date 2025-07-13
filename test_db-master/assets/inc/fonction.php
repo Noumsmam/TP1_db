@@ -11,9 +11,9 @@
             AND dept_manager.emp_no = employees.emp_no 
             WHERE dept_manager.to_date > '%s' ORDER BY dept_name ASC;";
         $req=sprintf($req,$now);
-        $sql=mysqli_query(dbconnect(),$req);
+        mysqli_query(dbconnect(),$req);
 
-        $r="SELECT * FROM v_departements;";
+        $r="SELECT * FROM v_departement;";
         $query=mysqli_query(dbconnect(),$r);
         $result=[];
         while( $row=mysqli_fetch_assoc($query) )
@@ -23,17 +23,18 @@
         return $result;
     }
 
-    function getDepartementEmployees($id)
+    function getDepartementEmployees($id,$page)
     {
+        $limit=$page * 20;
         $req="CREATE OR REPLACE VIEW v_emp_dept AS SELECT employees.emp_no,employees.first_name,employees.last_name,employees.birth_date,employees.gender,employees.hire_date
         FROM employees 
         JOIN departments
         JOIN dept_emp
         ON dept_emp.emp_no = employees.emp_no
-        WHERE dept_emp.dept_no = '%s';";
+        WHERE dept_emp.dept_no = '%s'LIMIT %s,20;";
         $req=sprintf($req,$id);
-        $sql=mysqli_query(dbconnect(),$req);
-        $r="SELECT * FROM v_departements;";
+        mysqli_query(dbconnect(),$req);
+        $r="SELECT * FROM v_emp_dept;";
         $query=mysqli_query(dbconnect(),$r);
         $result=[];
         while( $row=mysqli_fetch_assoc($query) )
@@ -56,8 +57,8 @@
         AND employees.emp_no = dept_emp.emp_no
         WHERE employees.emp_no = '%s' ;";
         $req=sprintf($req,$id);
-        $sql=mysqli_query(dbconnect(),$req);
-        $r="SELECT * FROM v_departements;";
+        mysqli_query(dbconnect(),$req);
+        $r="SELECT * FROM v_fiche_emp;";
         $query=mysqli_query(dbconnect(),$r);
         $result=[];
         while( $row=mysqli_fetch_assoc($query) )
