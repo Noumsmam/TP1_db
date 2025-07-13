@@ -97,4 +97,15 @@
         $requete = mysqli_query(dbconnect(), $sql);
         return $requete;
     }
+
+    function getNbEmp($id)
+    {
+        $now=date("Y-m-d");
+        $req="SELECT COUNT(*) AS nb FROM dept_emp 
+        WHERE dept_emp.dept_no = '%s';";
+        $req=sprintf($req,$id);
+        $sql=mysqli_query(dbconnect(),$req);
+        $result= mysqli_fetch_assoc($sql);
+        return $result['nb'];
+    }
 ?>

@@ -20,16 +20,19 @@
                     <th>Departments</th>
                     <th>Manager</th>
                     <th>Bouton Action</th>
+                    <th>Nombre d employées</th>
                 </tr>
-                <?php foreach($liste as $row) { ?>
+                <?php foreach($liste as $row) { $nbEmp = getNbEmp($row['dept_no']); ?>
                     <tr>
                         <td><?php echo $row['dept_name']; ?></td>
                         <td><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?> </td>
                         <td><a href="employees.php?dept=<?php echo $row['dept_no']; ?>"><button class="btn btn-primary">See Employees</button></a></td>
+                        <td><?php echo $nbEmp; ?></td>
                     </tr>
                 <?php } ?>
             </table>
         </div>
     </main>
+    <a href="liste_departement.php"><button class="btn btn-primary">Retout</button></a>
 </body>
 </html>
