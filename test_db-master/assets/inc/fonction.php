@@ -12,8 +12,11 @@
             WHERE dept_manager.to_date > '%s' ORDER BY dept_name ASC;";
         $req=sprintf($req,$now);
         $sql=mysqli_query(dbconnect(),$req);
+
+        $r="SELECT * FROM v_departements;";
+        $query=mysqli_query(dbconnect(),$r);
         $result=[];
-        while( $row=mysqli_fetch_assoc($sql) )
+        while( $row=mysqli_fetch_assoc($query) )
         {
             $result[]=$row;
         }
@@ -30,8 +33,10 @@
         WHERE dept_emp.dept_no = '%s';";
         $req=sprintf($req,$id);
         $sql=mysqli_query(dbconnect(),$req);
+        $r="SELECT * FROM v_departements;";
+        $query=mysqli_query(dbconnect(),$r);
         $result=[];
-        while( $row=mysqli_fetch_assoc($sql) )
+        while( $row=mysqli_fetch_assoc($query) )
         {
             $result[]=$row;
         }
@@ -52,8 +57,10 @@
         WHERE employees.emp_no = '%s' ;";
         $req=sprintf($req,$id);
         $sql=mysqli_query(dbconnect(),$req);
+        $r="SELECT * FROM v_departements;";
+        $query=mysqli_query(dbconnect(),$r);
         $result=[];
-        while( $row=mysqli_fetch_assoc($sql) )
+        while( $row=mysqli_fetch_assoc($query) )
         {
             $result[]=$row;
         }
@@ -71,6 +78,7 @@
                 AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < '%s' LIMIT %s, 20;";
         $sql = sprintf($sql, $numDept, $nom, $min, $max, $limit);
         $requete = mysqli_query(dbconnect(), $sql);
+        
         return $requete;
     }
 ?>
