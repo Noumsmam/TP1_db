@@ -68,32 +68,33 @@
         return $result;
     }
 
-    function rechercher($numDept, $nom, $min, $max, $page){
-    $limit = $page * 20;
-    $sql = "SELECT employees.*, TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) as Age
-            FROM employees
-            JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
-            WHERE 1=1 ";
+    function rechercher($numDept, $nom, $min, $max, $page)
+    {
+        $limit = $page * 20;
+        $sql = "SELECT employees.*, TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) as Age
+                FROM employees
+                JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+                WHERE 1=1 ";
 
-    if (!empty($numDept) && $numDept != "0") {
-        $sql .= "AND dept_emp.dept_no = '$numDept' ";
+        if (!empty($numDept) && $numDept != "0") {
+            $sql .= "AND dept_emp.dept_no = '$numDept' ";
+        }
+
+        if (!empty($nom)) {
+            $sql .= "AND employees.first_name LIKE '%$nom%' ";
+        }
+
+        if (!empty($min)) {
+            $sql .= "AND TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) >= $min ";
+        }
+
+        if (!empty($max)) {
+            $sql .= "AND TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) <= $max ";
+        }
+
+        $sql .= "LIMIT $limit, 20";
+
+        $requete = mysqli_query(dbconnect(), $sql);
+        return $requete;
     }
-
-    if (!empty($nom)) {
-        $sql .= "AND employees.first_name LIKE '%$nom%' ";
-    }
-
-    if (!empty($min)) {
-        $sql .= "AND TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) >= $min ";
-    }
-
-    if (!empty($max)) {
-        $sql .= "AND TIMESTAMPDIFF(YEAR, employees.birth_date, CURDATE()) <= $max ";
-    }
-
-    $sql .= "LIMIT $limit, 20";
-
-    $requete = mysqli_query(dbconnect(), $sql);
-    return $requete;
-}
 ?>
