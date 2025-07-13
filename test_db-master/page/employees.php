@@ -21,7 +21,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <form class="d-flex" role="search" action="../page/rechercher.php" method="post">
+        <form class="d-flex" role="search" action="rechercher.php" method="post">
             <select name="numDept">
                 <option value="0">Tous</option>
                 <?php foreach($dep as $row) { ?>
