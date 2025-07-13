@@ -1,7 +1,13 @@
 <?php
     include('../assets/inc/fonction.php');
+    $page=0;
+    if(isset($_GET['page']))
+    {
+        $page=$_GET['page'];
+    }
+    
     $idDept=$_GET['dept'];
-    $emp=getDepartementEmployees($idDept);
+    $emp=getDepartementEmployees($idDept,$page);
     $dep=getDepartement();
 ?>
 <!DOCTYPE html>

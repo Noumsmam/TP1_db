@@ -32,7 +32,7 @@
         JOIN dept_emp
         ON dept_emp.emp_no = employees.emp_no
         WHERE dept_emp.dept_no = '%s'LIMIT %s,20;";
-        $req=sprintf($req,$id);
+        $req=sprintf($req,$id,$limit);
         mysqli_query(dbconnect(),$req);
         $r="SELECT * FROM v_emp_dept;";
         $query=mysqli_query(dbconnect(),$r);
