@@ -35,37 +35,42 @@
         </form>
     </nav>
     <main>
-        <div class="col-8">
-            <?php if(isset($_GET['page'])) { ?>
-                <a href="traitement.php?page=<?php echo $page-1; ?>"><button class="btn btn-primary">precedent</button></a>
-            <?php } ?>
-        </div>
-
-        <div class="col-8 text-center mx-auto ">
-            <table class="table table-striped border table-hover">
-                <tr>
-                    <th>Id</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Gender</th>
-                    <th>Hire Date</th>
-                    <th>Voir plus</th>
-                </tr>
-                <?php foreach($emp as $row) { ?>
-                    <tr>
-                        <td><?php echo $row['emp_no']; ?></td>
-                        <td><?php echo $row['first_name']; ?></td>
-                        <td><?php echo $row['last_name']; ?></td>    
-                        <td><?php echo $row['gender']; ?></td>
-                        <td><?php echo $row['hire_date']; ?></td>
-                        <td><a href="fiche.php?id=<?php echo $row['emp_no']; ?>"><button class="btn btn-primary" >fiche</button></a></td>
-                    </tr>
+        <div class="row my-3">
+            <div class="col-8 text-start">
+                <?php if(isset($_GET['page'])) { ?>
+                    <?php
+                        if($_GET['page']!=0) { ?>
+                            <a href="traitement.php?page=<?php echo $page-1; ?>&dept=<?php echo $idDept; ?>"><button class="btn btn-primary">precedent</button></a>
+                        <?php } ?>
                 <?php } ?>
-            </table>
-        </div>
+            </div>
 
-        <div class="col-2">
-            <a href="traitement.php?page=<?php echo $page+1; ?>"></a>
+            <div class="col-8 text-center mx-auto ">
+                <table class="table table-striped border table-hover">
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Hire Date</th>
+                        <th>Voir plus</th>
+                    </tr>
+                    <?php foreach($emp as $row) { ?>
+                        <tr>
+                            <td><?php echo $row['emp_no']; ?></td>
+                            <td><?php echo $row['first_name']; ?></td>
+                            <td><?php echo $row['last_name']; ?></td>    
+                            <td><?php echo $row['gender']; ?></td>
+                            <td><?php echo $row['hire_date']; ?></td>
+                            <td><a href="fiche.php?id=<?php echo $row['emp_no']; ?>"><button class="btn btn-primary" >fiche</button></a></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+
+            <div class="col-2 text-end">
+                <a href="traitement.php?page=<?php echo $page+1; ?>&dept=<?php echo $idDept; ?>"><button class="btn btn-primary">suivant</button></a>
+            </div>
         </div>
     </main>
 </body>
