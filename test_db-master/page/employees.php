@@ -35,6 +35,12 @@
         </form>
     </nav>
     <main>
+        <div class="col-8">
+            <?php if(isset($_GET['page'])) { ?>
+                <a href="traitement.php?page=<?php echo $page-1; ?>"><button class="btn btn-primary">precedent</button></a>
+            <?php } ?>
+        </div>
+
         <div class="col-8 text-center mx-auto ">
             <table class="table table-striped border table-hover">
                 <tr>
@@ -56,6 +62,10 @@
                     </tr>
                 <?php } ?>
             </table>
+        </div>
+
+        <div class="col-2">
+            <a href="traitement.php?page=<?php echo $page+1; ?>"></a>
         </div>
     </main>
 </body>
